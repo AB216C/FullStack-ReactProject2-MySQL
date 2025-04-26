@@ -23,7 +23,7 @@ function IndividualCharacter() {
 
     })
     .then((response)=> {
-      alert(`${characterdata.name} deleted successfully`)
+      alert(` ${characterdata.name} deleted successfully`)
       navigate("/characters")
     })
 
