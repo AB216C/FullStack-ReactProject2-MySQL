@@ -1,0 +1,1 @@
+CORS(app, resources={r"/*": {"origins": "http://localhost:5175"}})
