@@ -51,7 +51,7 @@ function EditCharacter() {
 
       })
       .then((response)=> {
-        alert("Character updated successfully")
+        alert(`${characterData.name} updated successfully`)
         navigate("/characters")
       })
 
@@ -98,7 +98,7 @@ function EditCharacter() {
 
       </form>
 
-      <button onClick={handleBackButton} >Back-to-Characters</button>
+      <button onClick={()=>handleBackButton()} >Back-to-Characters</button>
 
     </div>
   )

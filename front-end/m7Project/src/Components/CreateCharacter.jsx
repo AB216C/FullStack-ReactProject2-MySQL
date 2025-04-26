@@ -13,6 +13,11 @@ function CreateCharacter() {
   const [validation,setValidation]=useState(false)
   const navigate = useNavigate()
 
+
+  const handleBackButton=()=> {
+    navigate("/characters")
+  }
+
   const handleSubmit=(event)=>{
 
     event.preventDefault();
@@ -76,8 +81,11 @@ function CreateCharacter() {
         </div>
 
         <button type="submit" >CREATE</button>
+  
 
       </form>
+
+      <button onClick={()=>handleBackButton()}> GO BACK </button>
 
     </div>
   )
