@@ -1,6 +1,7 @@
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 function CreateCharacter() {
 
@@ -10,6 +11,7 @@ function CreateCharacter() {
   const [image_url, setImage_url]=useState("")
   const [powers, setPowers] =useState("")
   const [validation,setValidation]=useState(false)
+  const navigate = useNavigate()
 
   const handleSubmit=(event)=>{
 
@@ -27,10 +29,12 @@ function CreateCharacter() {
 
       })
 
-      .then((response)=> response.json())
-      .then((data)=>{
-        console.log(data)
-      })
+      .then((response)=> {
+        alert(`${characterData.name} created succesfully`)
+        navigate("/characters")
+
+      }
+      )
 
       .catch((error)=>console.log("Unable to create character", error))
   

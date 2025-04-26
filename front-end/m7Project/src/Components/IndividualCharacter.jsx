@@ -1,10 +1,18 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
+import NavigationPage from "./NavigationPage"
 
 function IndividualCharacter() {
 
   const [characterdata, setCharacterData] = useState(null)
   const {charID} = useParams()
+  const navigate = useNavigate()
+
+  const handleEditCharacter=(id)=>{
+
+    navigate("/character/edit/"+id)
+    
+  }
 
   useEffect(()=> {
 
@@ -19,18 +27,20 @@ function IndividualCharacter() {
 
   return(
     <div>
+      <NavigationPage/>
       <p>This is an individual Character page</p>
 
 
       {characterdata && 
       <ul>
+        <li> <strong>ID:</strong> {characterdata.id}</li>
         <li> <strong>Name:</strong> {characterdata.name}</li>
         <li> <strong>Alias:</strong> {characterdata.alias}</li>
         <li>{characterdata.image_url && <img src={characterdata.image_url} />}</li>
         <li> <strong>Alignment:</strong> {characterdata.alignment}</li>
         <li> <strong>Powers:</strong> {characterdata.powers}</li>
 
-        <button>Edit Character</button>
+        <button onClick={()=>handleEditCharacter(characterdata.id)} >Edit Character</button>
         <button>Delete Character</button>
 
         </ul>}
