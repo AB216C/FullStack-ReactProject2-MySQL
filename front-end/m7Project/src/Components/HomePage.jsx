@@ -7,7 +7,8 @@ function HomePage() {
 
     <div>
       <NavigationPage/>
-      <p>This is a HomePage </p>
+      <h1>Marvel Characters</h1>
+      <p>Thank you for visiting our page</p>
     </div>
   )
 }

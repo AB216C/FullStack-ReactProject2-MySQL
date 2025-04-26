@@ -61,7 +61,6 @@ function EditCharacter() {
 
   return(
     <div>
-      <p>This is Edit Character Page</p>
 
       <form onSubmit={handleSubmit} >
 

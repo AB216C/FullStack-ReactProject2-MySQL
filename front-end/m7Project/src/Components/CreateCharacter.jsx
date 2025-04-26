@@ -47,7 +47,6 @@ function CreateCharacter() {
 
   return(
     <div>
-      <p>This is Create Character Page</p>
 
       <form onSubmit={handleSubmit} >
 

@@ -15,19 +15,22 @@ function IndividualCharacter() {
   }
 
   const handleDeleteCharacter=(id)=>{
-    fetch('http://127.0.0.1:5000/characters/'+charID, {
 
-      method: "DELETE",
+    if(window.confirm("Do you want to delete this character?")) {
+      fetch('http://127.0.0.1:5000/characters/'+charID, {
 
-      headers: {"Content-type":"application/json"},
-
-    })
-    .then((response)=> {
-      alert(` ${characterdata.name} deleted successfully`)
-      navigate("/characters")
-    })
-
-    .catch((error)=>console.log("Unable to edit character", error))
+        method: "DELETE",
+  
+        headers: {"Content-type":"application/json"},
+  
+      })
+      .then((response)=> {
+        alert(` ${characterdata.name} deleted successfully`)
+        navigate("/characters")
+      })
+  
+      .catch((error)=>console.log("Unable to edit character", error))
+    }
     
   }
 
@@ -45,9 +48,6 @@ function IndividualCharacter() {
   return(
     <div>
       <NavigationPage/>
-      <p>This is an individual Character page</p>
-
-
       {characterdata && 
       <ul>
         <li> <strong>ID:</strong> {characterdata.id}</li>

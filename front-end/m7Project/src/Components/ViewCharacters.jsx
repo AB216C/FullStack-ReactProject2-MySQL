@@ -26,8 +26,6 @@ function ViewCharacters(){
   return(
     <div>
       <NavigationPage/>
-      <p>This is our Characters page</p>
-
 
       {
         characters&& characters.map((character)=>
