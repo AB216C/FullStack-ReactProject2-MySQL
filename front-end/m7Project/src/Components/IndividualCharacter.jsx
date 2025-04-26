@@ -14,6 +14,23 @@ function IndividualCharacter() {
     
   }
 
+  const handleDeleteCharacter=(id)=>{
+    fetch('http://127.0.0.1:5000/characters/'+charID, {
+
+      method: "DELETE",
+
+      headers: {"Content-type":"application/json"},
+
+    })
+    .then((response)=> {
+      alert("Character deleted successfully")
+      navigate("/characters")
+    })
+
+    .catch((error)=>console.log("Unable to edit character", error))
+    
+  }
+
   useEffect(()=> {
 
     fetch(`http://127.0.0.1:5000/characters/${charID}`)
@@ -41,7 +58,7 @@ function IndividualCharacter() {
         <li> <strong>Powers:</strong> {characterdata.powers}</li>
 
         <button onClick={()=>handleEditCharacter(characterdata.id)} >Edit Character</button>
-        <button>Delete Character</button>
+        <button onClick={()=>handleDeleteCharacter(characterdata.id)} >Delete Character</button>
 
         </ul>}
     </div>

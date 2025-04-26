@@ -9,3 +9,6 @@
 
 
 
+// Afer running server.py, wait for one minute to allow connnections between server.py and mySQL
+// Then run npm for front end. Wait for 2 minutes for data to appear
+

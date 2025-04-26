@@ -5,7 +5,6 @@ import HomePage from './Components/HomePage'
 import EditCharacter from './Components/EditCharacter'
 import IndividualCharacter from './Components/IndividualCharacter'
 import CreateCharacter from './Components/CreateCharacter'
-import NavigationPage from './Components/NavigationPage'
 
 function App() {
 
