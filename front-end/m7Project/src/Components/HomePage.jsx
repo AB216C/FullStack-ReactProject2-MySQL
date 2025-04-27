@@ -1,6 +1,15 @@
+/*
+## Tools used to run front end
+  cd m7Project
+  npm install
+  npm run dev
+  npm install 
+  npm install react-router-dom axios
+  npm install react-bootstrap bootstrap 
+*/
+
 import 'bootstrap/dist/css/bootstrap.min.css'
 import NavigationPage from "./NavigationPage"
-
 function HomePage() {
 
 
