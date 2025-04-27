@@ -13,6 +13,7 @@ function EditCharacter() {
   const [image_url, setImage_url]=useState("")
   const [powers, setPowers] =useState("")
   const [validation,setValidation]=useState(false)
+  const [loading,setLoading]=useState(false)
   const navigate = useNavigate()
 
   const {charID} = useParams()
@@ -24,6 +25,7 @@ function EditCharacter() {
 
   useEffect(()=> {
 
+    setLoading(true)
     fetch(`http://127.0.0.1:5000/characters/${charID}`)
     .then((response)=>response.json())
     .then((data)=>{
@@ -32,8 +34,10 @@ function EditCharacter() {
       setAlignment(data.alignment)
       setPowers(data.powers)
       setImage_url(data.image_url)
+      setLoading(false)
     })
     .catch((error)=>console.log("unable to fetch URL", error))
+    setLoading(false)
 
   },[])
 
@@ -42,7 +46,7 @@ function EditCharacter() {
     event.preventDefault();
 
     const characterData = {name, alias, alignment, powers,image_url}
-
+       setLoading(true)
       fetch('http://127.0.0.1:5000/characters/'+charID, {
 
         method: "PUT",
@@ -55,14 +59,16 @@ function EditCharacter() {
       .then((response)=> {
         alert(`${characterData.name} updated successfully`)
         navigate("/characters")
+        setLoading(false)
       })
 
       .catch((error)=>console.log("Unable to edit character", error))
-  
+      setLoading(false)
   }
 
   return(
     <div>
+      {loading&& <h1>Updating...</h1>}
 
     <h1 className="bg-dark text-light px-2 py-5">UPDATE THE CHARACTER OF YOUR CHOICE</h1>
     <Form onSubmit={handleSubmit}>

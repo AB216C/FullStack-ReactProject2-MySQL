@@ -3,9 +3,11 @@ import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import NavigationPage from "./NavigationPage"
 
+
 function IndividualCharacter() {
 
   const [characterdata, setCharacterData] = useState(null)
+  const [loading,setLoading]=useState(false)
   const {charID} = useParams()
   const navigate = useNavigate()
 
@@ -22,6 +24,7 @@ function IndividualCharacter() {
   const handleDeleteCharacter=(id)=>{
 
     if(window.confirm("Do you want to delete this character?")) {
+      setLoading(true)
       fetch('http://127.0.0.1:5000/characters/'+charID, {
 
         method: "DELETE",
@@ -32,27 +35,30 @@ function IndividualCharacter() {
       .then((response)=> {
         alert(` ${characterdata.name} deleted successfully`)
         navigate("/characters")
+        setLoading(false)
       })
   
       .catch((error)=>console.log("Unable to edit character", error))
+      setLoading(false)
     }
     
   }
 
   useEffect(()=> {
-
+    setLoading(true)
     fetch(`http://127.0.0.1:5000/characters/${charID}`)
     // fetch('http://127.0.0.1:5000/characters/'+charID)
     .then((res)=>res.json())
     .then((data)=>setCharacterData(data))
     .catch((error)=>console.log("Unable to fetch URL", error))
-
+    setLoading(false)
   },[])
 
 
   return(
     <div>
       <button onClick={()=>handleBackButton()} className="btn btn-info my-4 py-3 px-3 fw-bold fs-3" >Back-to-Characters</button>
+      {loading&& <h1>Loading...</h1>}
 
       {characterdata && 
       <ul className="my-3">

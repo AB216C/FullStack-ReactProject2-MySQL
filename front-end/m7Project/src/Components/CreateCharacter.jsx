@@ -13,6 +13,7 @@ function CreateCharacter() {
   const [image_url, setImage_url]=useState("")
   const [powers, setPowers] =useState("")
   const [validation,setValidation]=useState(false)
+  const [loading,setLoading]=useState(false)
   const navigate = useNavigate()
 
 
@@ -25,7 +26,7 @@ function CreateCharacter() {
     event.preventDefault();
 
     const characterData = {name, alias, alignment, powers,image_url}
-
+    setLoading(true)
       fetch('http://127.0.0.1:5000/characters', {
 
         method: "POST",
@@ -39,20 +40,21 @@ function CreateCharacter() {
       .then((response)=> {
         alert(`${characterData.name} created succesfully`)
         navigate("/characters")
+        setLoading(false)
 
       }
       )
 
       .catch((error)=>console.log("Unable to create character", error))
+      setLoading(false)
   
   }
 
   return(
     <div>
       <h1 className="bg-dark text-light px-2 py-5">CREATE CHARACTER OF YOUR CHOICE</h1>
-
+      {loading && <hi>Creating...</hi>}
       <Form onSubmit={handleSubmit}>
-
         <Form.Group>
           <Form.Label htmlFor="name">Name: </Form.Label>
           <Form.Control  className="form-control" type="text" id="name" name="name" value={name} onMouseDown={()=>setValidation(true)} onChange={event=>setName(event.target.value)}required />

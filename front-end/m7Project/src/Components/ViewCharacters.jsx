@@ -6,8 +6,8 @@ import { useNavigate } from "react-router-dom"
 function ViewCharacters(){
 
   const navigate = useNavigate()
-
   const [characters, setCharacters]= useState([])
+  const [loading,setLoading] =useState(false)
 
   const handleDetails =(id)=> {
     navigate("/character/view/"+id)
@@ -18,15 +18,19 @@ function ViewCharacters(){
   }
 
   useEffect(()=>{
+    setLoading(true)
     fetch('http://127.0.0.1:5000/characters')
     .then((res)=>res.json())
     .then((data)=>setCharacters(data))
     .catch((error)=>console.log("Unable to fetch URL",error))
+    setLoading(false)
   },[])
 
   return(
     <div className="bg-info px-5 py-5">
       <NavigationPage/>
+
+      {loading&& <h1>Fetching URL...</h1>}
 
       {
         characters&& characters.map((character)=>
