@@ -1,3 +1,4 @@
+import 'bootstrap/dist/css/bootstrap.min.css'
 import { useEffect, useState } from "react"
 import NavigationPage from "./NavigationPage"
 import { useNavigate } from "react-router-dom"
@@ -24,19 +25,19 @@ function ViewCharacters(){
   },[])
 
   return(
-    <div>
+    <div className="bg-info px-5 py-5">
       <NavigationPage/>
 
       {
         characters&& characters.map((character)=>
           <ul key={character.id} >
             <li>{character.name}</li>
-            <button onClick={()=>handleDetails(character.id)} >Get Details </button>
+            <button onClick={()=>handleDetails(character.id)} className="btn btn-dark" >Get Details </button>
           </ul>
         )
       }
 
-      <button onClick={()=>handleCreateCharacter()} >Create a Character</button>
+      <button onClick={()=>handleCreateCharacter()} className="btn btn-warning my-3 ms-5 px-5 py-3 fw-bold fs-3" >Create Character</button>
 
     </div>
   )

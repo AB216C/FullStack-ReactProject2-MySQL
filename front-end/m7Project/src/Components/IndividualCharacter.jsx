@@ -1,3 +1,4 @@
+import 'bootstrap/dist/css/bootstrap.min.css'
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import NavigationPage from "./NavigationPage"
@@ -7,6 +8,10 @@ function IndividualCharacter() {
   const [characterdata, setCharacterData] = useState(null)
   const {charID} = useParams()
   const navigate = useNavigate()
+
+  const handleBackButton=()=> {
+    navigate("/characters")
+  }
 
   const handleEditCharacter=(id)=>{
 
@@ -47,9 +52,10 @@ function IndividualCharacter() {
 
   return(
     <div>
-      <NavigationPage/>
+      <button onClick={()=>handleBackButton()} className="btn btn-info my-4 py-3 px-3 fw-bold fs-3" >Back-to-Characters</button>
+
       {characterdata && 
-      <ul>
+      <ul className="my-3">
         <li> <strong>ID:</strong> {characterdata.id}</li>
         <li> <strong>Name:</strong> {characterdata.name}</li>
         <li> <strong>Alias:</strong> {characterdata.alias}</li>
@@ -57,8 +63,8 @@ function IndividualCharacter() {
         <li> <strong>Alignment:</strong> {characterdata.alignment}</li>
         <li> <strong>Powers:</strong> {characterdata.powers}</li>
 
-        <button onClick={()=>handleEditCharacter(characterdata.id)} >Edit Character</button>
-        <button onClick={()=>handleDeleteCharacter(characterdata.id)} >Delete Character</button>
+        <button onClick={()=>handleEditCharacter(characterdata.id)} className="btn btn-secondary mx-3 my-3 px-4 py-3 fw-bold fs-3">Edit Character</button>
+        <button onClick={()=>handleDeleteCharacter(characterdata.id)} className="btn btn-danger mx-3 my-3 px-4 py-3 fw-bold fs-3">Delete Character</button>
 
         </ul>}
     </div>

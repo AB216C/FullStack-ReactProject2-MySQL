@@ -13,9 +13,9 @@ function NavigationPage() {
   return(
 
 
-      <Navbar expand="lg" className="bg-body-tertiary">
+      <Navbar expand="lg" className="bg-secondary color-light py-5">
       <Container fluid>
-        <Navbar.Brand as={Link} to={"/"} >Marvels</Navbar.Brand>
+        <Navbar.Brand as={Link} to={"/"} className="fs-1" >SuperHuman</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
@@ -23,8 +23,8 @@ function NavigationPage() {
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
-            <Nav.Link as={Link} to={"/"} >Home</Nav.Link>
-            <Nav.Link as={Link} to={"/characters"} >Characters</Nav.Link>
+            <Nav.Link as={Link} to={"/"} className="fw-bolder fs-3" >Home</Nav.Link>
+            <Nav.Link as={Link} to={"/characters"} className="fw-bolder fs-3">Characters</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

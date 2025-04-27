@@ -58,3 +58,12 @@ ul li {
   font-size:30px;
   color:rgb(49, 49, 93)
 }
+
+div p {
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
+}
+
+div label {
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 30px;
+}

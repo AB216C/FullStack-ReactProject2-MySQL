@@ -1,3 +1,4 @@
+import 'bootstrap/dist/css/bootstrap.min.css'
 import NavigationPage from "./NavigationPage"
 
 function HomePage() {
@@ -5,10 +6,11 @@ function HomePage() {
 
   return(
 
-    <div>
+    <div className="bg-info text-center px-5 py-5">
       <NavigationPage/>
-      <h1>Marvel Characters</h1>
-      <p>Thank you for visiting our page</p>
+
+      <h1 className="fw-bolder my-5 fs-1">Welcome to the world of famous Marvel Characters. </h1>
+      <p className="fw-bolder my-5 fs-1">Take your time and explore </p>
     </div>
   )
 }
